@@ -11,7 +11,7 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className="h-screen flex flex-col justify-between bg-gray-50 overflow-hidden">
+      <div className="h-[90vh] flex flex-col justify-between bg-gray-50 overflow-hidden">
         <div className="flex-grow flex items-center justify-center overflow-hidden">
           <div className="w-[350px] p-6 bg-[#f7f8f9] border border-gray-300 rounded-md flex flex-col justify-between h-[600px]">
             <div className="w-full">

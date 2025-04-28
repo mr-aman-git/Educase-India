@@ -5,7 +5,7 @@ import dp from "../assets/dp-girl.png"
 const ProfileView = () => {
   return (
     <>
-      <div className="h-screen flex flex-col justify-between bg-gray-50 overflow-hidden">
+      <div className="h-[90vh] flex flex-col justify-between bg-gray-50 overflow-hidden">
         <div className="flex-grow flex items-center justify-center">
           <div className="w-[350px] bg-[#f7f8f9] border border-gray-300 h-[600px] flex flex-col">
             <div className="p-6 border-b border-gray-200 bg-white">

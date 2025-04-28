@@ -14,7 +14,7 @@ const WelcomePage = () => {
 
   return (
     <>
-      <div className="h-screen flex flex-col justify-between bg-gray-50 overflow-hidden">
+      <div className="h-[90vh] flex flex-col justify-between bg-gray-50 overflow-hidden">
         <div className="flex-grow flex items-center justify-center overflow-hidden">
           <div className="w-80 p-6 bg-[#f7f8f9] border border-[#dfe0e1] flex flex-col justify-end items-center h-[600px]">
             <div className="w-full flex flex-col items-center">

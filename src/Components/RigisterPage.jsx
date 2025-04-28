@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
@@ -114,8 +113,6 @@ const RegisterPage = () => {
             </div>
           </div>
         </div>
-
-        <Footer />
       </div>
     </>
   );

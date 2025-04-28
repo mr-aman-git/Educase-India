@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 const WelcomePage = () => {
@@ -38,7 +37,6 @@ const WelcomePage = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

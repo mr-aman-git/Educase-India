@@ -8,6 +8,10 @@ const WelcomePage = () => {
         navigate('/login');
       };
 
+      const goToRegisterPage = () => {
+        navigate('/register');
+      };
+
   return (
     <>
     <div>
@@ -18,7 +22,9 @@ const WelcomePage = () => {
       <p className="text-gray-500 mb-6">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
       </p>
-      <button className="w-full bg-[#6c25ff] text-white font-semibold py-2 rounded-md mb-3 cursor-pointer">
+      <button 
+      onClick={goToRegisterPage}
+      className="w-full bg-[#6c25ff] text-white font-semibold py-2 rounded-md mb-3 cursor-pointer">
         Create Account
       </button>
       <button

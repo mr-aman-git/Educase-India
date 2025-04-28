@@ -1,7 +1,12 @@
 import React from 'react';
 import Footer from './Footer';
-
+import { useNavigate } from 'react-router-dom';
 const RegisterPage = () => {
+    const navigate = useNavigate(); 
+        const goToProfilePage = () => {
+            navigate('/profile');
+          };
+
   return (
     <>
     <div className="min-h-screen flex items-center justify-center bg-gray-50 ">
@@ -78,6 +83,7 @@ const RegisterPage = () => {
               </label>
             </div>
             <button
+            onClick={goToProfilePage}
             type="submit"
             className="w-full bg-[#6c25ff] text-white font-semibold py-2 rounded-md mt-[50px] cursor-pointer transition-all"
           >

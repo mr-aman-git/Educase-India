@@ -7,7 +7,7 @@ const Footer = () => {
   const [page, setPage] = useState(1);
   const totalPage = 4;
   const goToHomePage = () => {
-    navigate("/");
+    setPage(1);
   };
 
   const handleLeft = () => {

@@ -1,7 +1,10 @@
 import React from 'react';
+import Footer from './Footer';
 
 const WelcomePage = () => {
   return (
+    <>
+    <div>
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
   <div className="w-80 p-6 bg-[#f7f8f9] border border-[#dfe0e1] flex flex-col justify-end items-center h-[600px]">
     <div className="w-full flex flex-col items-center">
@@ -16,9 +19,12 @@ const WelcomePage = () => {
         Already Registered? Login
       </button>
     </div>
+    
   </div>
 </div>
-
+<Footer/>
+</div>
+</>
   );
 };
 

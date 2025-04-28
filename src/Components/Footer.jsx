@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaCloud, FaHome, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import {useNavigate} from 'react-router-dom'
 
@@ -9,28 +9,26 @@ const Footer = () => {
     const goToHomePage = () => {
         navigate('/');
       };
-      const goToLoginPage = () => {
+    const goToLoginPage = () => {
         navigate('/login');
       };
-
-      const handleLeft=()=>{
-        if (page > 1) {
-            setPage(prevPage => prevPage - 1);
-            if (page == 1) {
-                goToHomePage();
-            }
-          }
-      }
-
-      const handleRight=()=>{
+    
+      const handleLeft = () => {
         if (page < totalPage) {
             setPage(prevPage => prevPage + 1);
+            console.log("page left: ", page);
             
-            if (page == 2) {
-              goToLoginPage();
-            }
           }
-      }
+        
+      };
+    
+      const handleRight = () => {
+        if (page > 1) {
+            setPage(prevPage => prevPage - 1);
+            console.log("page right: ", page);
+          }
+      };
+
   return (
     <div className="w-full flex items-center justify-between px-6 py-3 bg-gray-50 text-gray-500 text-sm border-t mt-4">
 

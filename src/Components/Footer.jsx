@@ -9,50 +9,78 @@ const Footer = () => {
   const goToHomePage = () => {
     navigate("/");
   };
-  const goToLoginPage = () => {
-    navigate("/login");
-  };
 
   const handleLeft = () => {
     if (page > 1) {
       setPage((prevPage) => prevPage - 1);
-      console.log("page right: ", page);
     }
   };
 
   const handleRight = () => {
     if (page < totalPage) {
       setPage((prevPage) => prevPage + 1);
-      console.log("page left: ", page);
     }
   };
 
+  useEffect(() => {
+    console.log("page changed to:", page);
+
+    if (page === 1) {
+      navigate("/", { replace: true });
+    } else if (page === 2) {
+      navigate("/login", { replace: true });
+    } else if (page === 3) {
+      navigate("/register", { replace: true });
+    } else if (page === 4) {
+      navigate("/profile", { replace: true });
+    }
+  }, [page, navigate]);
+
+  const currentDateTime = new Date().toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
   return (
-    <div className="w-full flex items-center justify-between px-6 py-3 bg-gray-50 text-gray-500 text-sm border-t mt-4">
-      <a href="https://helpx.adobe.com/support/xd.html?sdid=YXPZG4ZY&mv=other">
-        <div className="flex items-center gap-2 hover:text-gray-700">
-          <span>Made with Adobe XD</span>
-          <FaCloud size={16} />
-        </div>
+    <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-3 bg-gray-50 text-gray-500 text-sm border-t mt-4">
+      <a
+        href="https://helpx.adobe.com/support/xd.html?sdid=YXPZG4ZY&mv=other"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 hover:text-gray-700"
+      >
+        <span>Made with Adobe XD</span>
+        <FaCloud size={16} />
       </a>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <FaHome
           size={16}
           onClick={goToHomePage}
           className="cursor-pointer hover:text-gray-700"
         />
-        <FaChevronLeft size={14} onClick={handleLeft} />
-        <span>
-          {" "}
+        <FaChevronLeft
+          size={14}
+          onClick={handleLeft}
+          className="cursor-pointer hover:text-gray-700"
+        />
+        <span className="whitespace-nowrap">
           {page} of {totalPage}
         </span>
-
-        <FaChevronRight size={14} onClick={handleRight} />
+        <FaChevronRight
+          size={14}
+          onClick={handleRight}
+          className="cursor-pointer hover:text-gray-700"
+        />
       </div>
 
-      <div className="text-right text-xs">
-        Link updated: May 9, 2023, 8:43 AM
+      <div className="text-xs text-center md:text-right w-full md:w-auto">
+        Link updated: {currentDateTime}
       </div>
     </div>
   );

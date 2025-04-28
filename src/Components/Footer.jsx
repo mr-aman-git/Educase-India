@@ -1,8 +1,38 @@
+import { use, useState } from 'react';
 import { FaCloud, FaHome, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {useNavigate} from 'react-router-dom'
 
 const Footer = () => {
+    const navigate = useNavigate();
+    const [page , setPage]= useState(1)
+    const totalPage = 4;
+    const goToHomePage = () => {
+        navigate('/');
+      };
+      const goToLoginPage = () => {
+        navigate('/login');
+      };
+
+      const handleLeft=()=>{
+        if (page > 1) {
+            setPage(prevPage => prevPage - 1);
+            if (page == 1) {
+                goToHomePage();
+            }
+          }
+      }
+
+      const handleRight=()=>{
+        if (page < totalPage) {
+            setPage(prevPage => prevPage + 1);
+            
+            if (page == 2) {
+              goToLoginPage();
+            }
+          }
+      }
   return (
-    <div className="w-full flex items-center justify-between px-6 py-3 bg-gray-50 text-gray-500 text-sm border-t">
+    <div className="w-full flex items-center justify-between px-6 py-3 bg-gray-50 text-gray-500 text-sm border-t mt-4">
 
       <div className="flex items-center gap-2">
         <span>Made with Adobe XD</span>
@@ -11,10 +41,11 @@ const Footer = () => {
 
       
       <div className="flex items-center gap-2">
-        <FaHome size={16} />
-        <FaChevronLeft size={14} />
-        <span>1 of 4</span>
-        <FaChevronRight size={14} />
+        <FaHome size={16} onClick={goToHomePage}  className='cursor-pointer hover:text-gray-700' />
+        <FaChevronLeft size={14} onClick={handleLeft}/>
+        <span> {page} of {totalPage}</span>
+
+        <FaChevronRight size={14} onClick={handleRight} />
       </div>
 
       

@@ -1,7 +1,13 @@
 import React from 'react';
 import Footer from './Footer';
+import {useNavigate} from 'react-router-dom'
 
 const WelcomePage = () => {
+    const navigate = useNavigate(); 
+    const goToLoginPage = () => {
+        navigate('/login');
+      };
+
   return (
     <>
     <div>
@@ -15,7 +21,9 @@ const WelcomePage = () => {
       <button className="w-full bg-[#6c25ff] text-white font-semibold py-2 rounded-md mb-3 cursor-pointer">
         Create Account
       </button>
-      <button className="w-full bg-purple-100 text-[#31333f] font-semibold py-2 rounded-md cursor-pointer">
+      <button
+      onClick={goToLoginPage}  
+      className="w-full bg-purple-100 text-[#31333f] font-semibold py-2 rounded-md cursor-pointer" >
         Already Registered? Login
       </button>
     </div>

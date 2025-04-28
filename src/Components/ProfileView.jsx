@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "./Footer";
 import { FaCamera } from "react-icons/fa";
+import dp from "../assets/dp-girl.png"
 
 const ProfileView = () => {
   return (
@@ -16,7 +16,7 @@ const ProfileView = () => {
               <div className="flex items-center space-x-4">
                 <div className="relative">
                   <img
-                    src="https://photosnow.org/wp-content/uploads/2024/04/cute-girl-pic_11.jpg"
+                    src={dp}
                     alt="Profile"
                     className="w-20 h-20 rounded-full object-cover"
                   />
@@ -37,11 +37,9 @@ const ProfileView = () => {
               </div>
             </div>
 
-            <div className="border-t border-dashed border-gray-300 p-4"></div>
+            <div className="border-t border-dashed border-gray-300 p-4 mb-[330px]"></div>
           </div>
         </div>
-
-        <Footer />
       </div>
     </>
   );

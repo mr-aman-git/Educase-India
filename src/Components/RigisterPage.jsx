@@ -7,7 +7,8 @@ const RegisterPage = () => {
 
   const navigate = useNavigate();
 
-  const goToProfilePage = () => {
+  const goToProfilePage = (e) => {
+    e.preventDefault();
     setPage((prev) => {
       if (prev === 4) {
         navigate("/profile", { replace: true });

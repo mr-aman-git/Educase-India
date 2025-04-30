@@ -1,5 +1,7 @@
 import React from "react";
 import { usePage } from "./hook/PageContext";
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const {loginEmail, setLoginEmail, loginPass, setLoginPass, setPage} = usePage()
@@ -10,10 +12,18 @@ const LoginPage = () => {
     const savedPassword = localStorage.getItem("password");
   
     if (loginEmail === savedEmail && loginPass === savedPassword) {
-      // Login success
-      setPage(4); // jao profile page pe
+      toast.success('Login Successfull', {
+        position: "top-center",
+        autoClose: 5000,
+        });
+        setTimeout(() => {
+          setPage(4);
+        }, 1000);
     } else {
-      alert("Invalid Email or Password");
+      toast.error('Invalid Email or Password', {
+        position: "top-center",
+        
+        });
     }
   };
   
@@ -66,6 +76,7 @@ const LoginPage = () => {
 
         
       </div>
+      <ToastContainer />
     </>
   );
 };

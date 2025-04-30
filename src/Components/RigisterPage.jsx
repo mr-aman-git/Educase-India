@@ -1,16 +1,26 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePage } from "./hook/PageContext";
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage = () => {
-  
-  const { page, setPage, email,  setEmail, name, setName, password, setPassword } = usePage();
+  const {
+    page,
+    setPage,
+    email,
+    setEmail,
+    name,
+    setName,
+    password,
+    setPassword,
+  } = usePage();
   const handleNameChange = (e) => {
     const value = e.target.value;
     setName(value);
     localStorage.setItem("name", value);
   };
-  
+
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
@@ -21,17 +31,22 @@ const RegisterPage = () => {
     setPassword(value);
     localStorage.setItem("password", value);
   };
-  
 
   const navigate = useNavigate();
 
   const goToProfilePage = (e) => {
-    e.preventDefault();
-    setPage((prev) => {
-      if (prev === 4) {
-        navigate("/profile", { replace: true });
-      }
-      return 4;
+    toast.success("Register Successfull", {
+      position: "top-center",
+      autoClose: 5000,
+    });
+    setTimeout(() => {
+      e.preventDefault();
+      setPage((prev) => {
+        if (prev === 4) {
+          navigate("/profile", { replace: true });
+        }
+        return 4;
+      }, 1000);
     });
   };
 
@@ -53,7 +68,7 @@ const RegisterPage = () => {
                     Full Name<span className="text-red-500">*</span>
                   </label>
                   <input
-                  onChange={handleNameChange}
+                    onChange={handleNameChange}
                     type="text"
                     placeholder="Name"
                     className="w-full border border-gray-300 rounded-md py-[4px] px-3 outline-none"
@@ -76,7 +91,7 @@ const RegisterPage = () => {
                     Email address<span className="text-red-500">*</span>
                   </label>
                   <input
-                  onChange={handleEmailChange}
+                    onChange={handleEmailChange}
                     type="email"
                     placeholder="Enter email address"
                     className="w-full border border-gray-300 rounded-md py-[4px] px-3 outline-none"
@@ -88,7 +103,7 @@ const RegisterPage = () => {
                     Password<span className="text-red-500">*</span>
                   </label>
                   <input
-                  onChange={handlePassChange}
+                    onChange={handlePassChange}
                     type="password"
                     placeholder="Enter password"
                     className="w-full border border-gray-300 rounded-md py-[4px] px-3 outline-none"
@@ -148,6 +163,7 @@ const RegisterPage = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

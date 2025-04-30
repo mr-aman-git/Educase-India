@@ -1,15 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { usePage } from "./hook/PageContext";
 const WelcomePage = () => {
+  const { page, setPage } = usePage();
   const navigate = useNavigate();
 
   const goToLoginPage = () => {
-    navigate("/login");
+    setPage((prev) => {
+      if (prev === 2) {
+        navigate("/login", { replace: true });
+      }
+      return 2;
+    });
   };
 
   const goToRegisterPage = () => {
-    navigate("/register");
+    setPage((prev) => {
+      if (prev === 3) {
+        navigate("/register", { replace: true });
+      }
+      return 3;
+    });
   };
 
   return (

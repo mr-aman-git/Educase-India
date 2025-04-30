@@ -1,15 +1,15 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import WelcomePage from "./Components/WelcomePage";
 import { LoginPage } from "./Components/LoginPage";
 import RegisterPage from "./Components/RigisterPage";
 import ProfileView from "./Components/ProfileView";
 import Footer from "./Components/Footer";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import React from "react";
+import { PageProvider } from "./Components/hook/PageContext"; // <== Yeh line add karo
 
 const App = () => {
   return (
-    <>
+    <PageProvider>
       <Router>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
@@ -17,9 +17,9 @@ const App = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/profile" element={<ProfileView />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
-    </>
+    </PageProvider>
   );
 };
 

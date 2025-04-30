@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FaCloud, FaHome, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import { usePage } from "./hook/PageContext";
 const Footer = () => {
   const navigate = useNavigate();
-  const [page, setPage] = useState(1);
+  const { page, setPage } = usePage();
   const totalPage = 4;
   const goToHomePage = () => {
     setPage(1);
@@ -23,8 +23,6 @@ const Footer = () => {
   };
 
   useEffect(() => {
-    console.log("page changed to:", page);
-
     if (page === 1) {
       navigate("/", { replace: true });
     } else if (page === 2) {

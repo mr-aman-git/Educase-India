@@ -1,12 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { usePage } from "./hook/PageContext";
 
 const RegisterPage = () => {
+  const { page, setPage } = usePage();
+
   const navigate = useNavigate();
 
-  const goToProfilePage = (e) => {
-    e.preventDefault();
-    navigate("/profile");
+  const goToProfilePage = () => {
+    setPage((prev) => {
+      if (prev === 4) {
+        navigate("/profile", { replace: true });
+      }
+      return 4;
+    });
   };
 
   return (

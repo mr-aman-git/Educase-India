@@ -4,7 +4,7 @@ import { usePage } from "./hook/PageContext";
 
 const RegisterPage = () => {
   const [password, setPassword] = useState("");
-  const { page, setPage,  setEmail, setName } = usePage();
+  const { page, setPage, email,  setEmail, name, setName, } = usePage();
   const handleNameChange = (e) => {
     const value = e.target.value;
     setName(value);
@@ -129,7 +129,7 @@ const RegisterPage = () => {
 
                 <button
                   type="submit"
-                  disabled={!password}
+                  disabled={!password || !name || !email}
                   className={`w-full bg-[#6c25ff] text-white font-semibold py-2 rounded-md mt-14 transition-all ${
                     !password
                       ? "bg-gray-400 cursor-not-allowed"

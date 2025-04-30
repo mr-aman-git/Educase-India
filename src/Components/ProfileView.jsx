@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { FaCamera } from "react-icons/fa";
-import dp from "../assets/dp-girl.png"
+import dp from "../assets/dp-girl.png";
 import { usePage } from "./hook/PageContext";
 import { useEffect } from "react";
 
 const ProfileView = () => {
-  const {setEmail, email, name, setName} = usePage();
+  const { setEmail, email, name, setName } = usePage();
+  const [image, setImage] = useState(localStorage.getItem("profileImage") || "");
 
   useEffect(() => {
     const name = localStorage.getItem("name");
@@ -13,6 +14,23 @@ const ProfileView = () => {
     if (name) setName(name);
     if (email) setEmail(email);
   }, []);
+
+
+const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    const base64 = reader.result;
+    setImage(base64);
+    localStorage.setItem("profileImage", base64);
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+};
+
 
   return (
     <>
@@ -27,18 +45,26 @@ const ProfileView = () => {
               <div className="flex items-center space-x-4">
                 <div className="relative">
                   <img
-                    src={dp}
+                    src={ image ||dp}
                     alt="Profile"
                     className="w-20 h-20 rounded-full object-cover"
                   />
-                  <div className="absolute bottom-0 right-0 bg-purple-600 p-1 rounded-full">
+                  <label className="absolute bottom-0 right-0 bg-purple-600 p-1 rounded-full cursor-pointer">
                     <FaCamera className="text-white text-xs" />
-                  </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      style={{ display: "none" }}
+                    />
+                  </label>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold">{name ||"Marry Doe"}</h3>
-                  <p className="text-gray-500 text-sm">{email || "Marry@Gmail.Com"}</p>
+                  <h3 className="font-semibold">{name || "Marry Doe"}</h3>
+                  <p className="text-gray-500 text-sm">
+                    {email || "Marry@Gmail.Com"}
+                  </p>
                 </div>
               </div>
 

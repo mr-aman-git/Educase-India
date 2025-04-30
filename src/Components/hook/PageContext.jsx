@@ -4,8 +4,10 @@ const PageContext = createContext();
 
 export const PageProvider = ({ children }) => {
   const [page, setPage] = useState(1);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   return (
-    <PageContext.Provider value={{ page, setPage }}>
+    <PageContext.Provider value={{ page, setPage, email, setEmail, name, setName }}>
       {children}
     </PageContext.Provider>
   );

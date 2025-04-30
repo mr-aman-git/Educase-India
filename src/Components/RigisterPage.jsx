@@ -1,9 +1,22 @@
-import React from "react";
+import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { usePage } from "./hook/PageContext";
 
 const RegisterPage = () => {
-  const { page, setPage } = usePage();
+  const [password, setPassword] = useState("");
+  const { page, setPage,  setEmail, setName } = usePage();
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    setName(value);
+    localStorage.setItem("name", value);
+  };
+  
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    localStorage.setItem("email", value);
+  };
+  
 
   const navigate = useNavigate();
 
@@ -35,8 +48,9 @@ const RegisterPage = () => {
                     Full Name<span className="text-red-500">*</span>
                   </label>
                   <input
+                  onChange={handleNameChange}
                     type="text"
-                    placeholder="Marry Doe"
+                    placeholder="Name"
                     className="w-full border border-gray-300 rounded-md py-[4px] px-3 outline-none"
                   />
                 </div>
@@ -57,6 +71,7 @@ const RegisterPage = () => {
                     Email address<span className="text-red-500">*</span>
                   </label>
                   <input
+                  onChange={handleEmailChange}
                     type="email"
                     placeholder="Enter email address"
                     className="w-full border border-gray-300 rounded-md py-[4px] px-3 outline-none"
@@ -68,6 +83,7 @@ const RegisterPage = () => {
                     Password<span className="text-red-500">*</span>
                   </label>
                   <input
+                  onChange={(e)=>setPassword(e.target.value)}
                     type="password"
                     placeholder="Enter password"
                     className="w-full border border-gray-300 rounded-md py-[4px] px-3 outline-none"
@@ -113,7 +129,12 @@ const RegisterPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#6c25ff] text-white font-semibold py-2 rounded-md mt-14 cursor-pointer transition-all"
+                  disabled={!password}
+                  className={`w-full bg-[#6c25ff] text-white font-semibold py-2 rounded-md mt-14 transition-all ${
+                    !password
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-[#6c25ff] text-white cursor-pointer"
+                  }`}
                 >
                   Create Account
                 </button>

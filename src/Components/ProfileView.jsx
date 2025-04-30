@@ -1,8 +1,19 @@
 import React from "react";
 import { FaCamera } from "react-icons/fa";
 import dp from "../assets/dp-girl.png"
+import { usePage } from "./hook/PageContext";
+import { useEffect } from "react";
 
 const ProfileView = () => {
+  const { email, name, setName } = usePage();
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("name");
+    if (savedName) {
+      setName(savedName);
+    }
+  }, [setName]);
+
   return (
     <>
       <div className="h-[90vh] flex flex-col justify-between bg-gray-50 overflow-hidden">
@@ -26,8 +37,8 @@ const ProfileView = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold">Marry Doe</h3>
-                  <p className="text-gray-500 text-sm">Marry@Gmail.Com</p>
+                  <h3 className="font-semibold">{name ||"Marry Doe"}</h3>
+                  <p className="text-gray-500 text-sm">{email || "Marry@Gmail.Com"}</p>
                 </div>
               </div>
 

@@ -5,14 +5,14 @@ import { usePage } from "./hook/PageContext";
 import { useEffect } from "react";
 
 const ProfileView = () => {
-  const { email, name, setName } = usePage();
+  const {setEmail, email, name, setName} = usePage();
 
   useEffect(() => {
-    const savedName = localStorage.getItem("name");
-    if (savedName) {
-      setName(savedName);
-    }
-  }, [setName]);
+    const name = localStorage.getItem("name");
+    const email = localStorage.getItem("email");
+    if (name) setName(name);
+    if (email) setEmail(email);
+  }, []);
 
   return (
     <>

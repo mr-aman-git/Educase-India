@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { usePage } from "./hook/PageContext";
 
 const RegisterPage = () => {
-  const [password, setPassword] = useState("");
-  const { page, setPage, email,  setEmail, name, setName, } = usePage();
+  
+  const { page, setPage, email,  setEmail, name, setName, password, setPassword } = usePage();
   const handleNameChange = (e) => {
     const value = e.target.value;
     setName(value);
@@ -15,6 +15,11 @@ const RegisterPage = () => {
     const value = e.target.value;
     setEmail(value);
     localStorage.setItem("email", value);
+  };
+  const handlePassChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    localStorage.setItem("password", value);
   };
   
 
@@ -83,7 +88,7 @@ const RegisterPage = () => {
                     Password<span className="text-red-500">*</span>
                   </label>
                   <input
-                  onChange={(e)=>setPassword(e.target.value)}
+                  onChange={handlePassChange}
                     type="password"
                     placeholder="Enter password"
                     className="w-full border border-gray-300 rounded-md py-[4px] px-3 outline-none"

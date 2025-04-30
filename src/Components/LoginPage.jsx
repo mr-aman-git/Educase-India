@@ -1,6 +1,22 @@
 import React from "react";
+import { usePage } from "./hook/PageContext";
 
 const LoginPage = () => {
+  const {loginEmail, setLoginEmail, loginPass, setLoginPass, setPage} = usePage()
+  const handleLogin = (e) => {
+    e.preventDefault();
+  
+    const savedEmail = localStorage.getItem("email");
+    const savedPassword = localStorage.getItem("password");
+  
+    if (loginEmail === savedEmail && loginPass === savedPassword) {
+      // Login success
+      setPage(4); // jao profile page pe
+    } else {
+      alert("Invalid Email or Password");
+    }
+  };
+  
   return (
     <>
       <div className="h-[90vh] flex flex-col justify-between bg-gray-50 overflow-hidden">
@@ -20,6 +36,7 @@ const LoginPage = () => {
                   Email Address
                 </label>
                 <input
+                onChange={(e)=>setLoginEmail(e.target.value)}
                   type="email"
                   placeholder="Enter email address"
                   className="w-full border border-gray-300 rounded-md px-[10px] py-[6px] mt-1 focus:outline-none focus:border-purple-600"
@@ -31,13 +48,16 @@ const LoginPage = () => {
                   Password
                 </label>
                 <input
+                onChange={(e)=>setLoginPass(e.target.value)}
                   type="password"
                   placeholder="Enter password"
                   className="w-full border border-gray-300 rounded-md px-[10px] py-[6px] mt-1 focus:outline-none focus:border-purple-600"
                 />
               </div>
 
-              <button className="w-full bg-gray-300 text-white font-semibold py-2 rounded-md cursor-pointer">
+              <button 
+              onClick={handleLogin}
+              className="w-full font-semibold py-2 rounded-md bg-[#6c25ff] text-white cursor-pointer">
                 Login
               </button>
             </div>

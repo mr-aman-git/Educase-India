@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import WelcomePage from "./Components/WelcomePage";
 import { LoginPage } from "./Components/LoginPage";
-import RegisterPage from "./Components/RigisterPage";
+import RegisterPage from "./Components/RegisterPage";
 import ProfileView from "./Components/ProfileView";
 import Footer from "./Components/Footer";
 import { PageProvider } from "./Components/hook/PageContext"; // <== Yeh line add karo

@@ -28,7 +28,7 @@ const Footer = () => {
     } else if (page === 2) {
       navigate("/login", { replace: true });
     } else if (page === 3) {
-      navigate("/register", { replace: true });
+      navigate("/", { replace: true });
     } else if (page === 4) {
       navigate("/profile", { replace: true });
     }

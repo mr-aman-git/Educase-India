@@ -17,7 +17,7 @@ const WelcomePage = () => {
   const goToRegisterPage = () => {
     setPage((prev) => {
       if (prev === 3) {
-        navigate("/", { replace: true });
+        navigate("/register", { replace: true });
       }
       return 3;
     });
